@@ -7,8 +7,8 @@
     "email": "1075790909@qq.com"
   },
   "sideEffects": false,
-  "homepage": "https://gitee.com/white-kite/vite-plugin-after-build/blob/master/README.md",
-  "repository": "https://gitee.com/white-kite/vite-plugin-after-build",
+  "homepage": "https://gitee.com/white-kite/unplugin-after-build/blob/master/README.md",
+  "repository": "https://gitee.com/white-kite/unplugin-after-build",
   "scripts": {
     "build": "turbo run build"
   },

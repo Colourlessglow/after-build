@@ -1,14 +1,14 @@
 {
   "name": "@whitekite/unplugin-after-build",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": {
     "name": "whitekite",
     "email": "1075790909@qq.com"
   },
   "sideEffects": false,
-  "homepage": "https://gitee.com/white-kite/vite-plugin-after-build/blob/master/README.md",
-  "repository": "https://gitee.com/white-kite/vite-plugin-after-build",
+  "homepage": "https://gitee.com/white-kite/unplugin-after-build/blob/master/README.md",
+  "repository": "https://gitee.com/white-kite/unplugin-after-build",
   "scripts": {
     "build": "tsup-node",
     "dev": "tsup-node --watch"

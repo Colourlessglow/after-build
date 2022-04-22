@@ -1,6 +1,8 @@
-# @whitekite/vite-plugin-after-build
+# @whitekite/unplugin-after-build
 
-一个vite插件
+unplugin 赋能
+
+同时兼容webpack与vite
 
 运行于打包结束之后
 
@@ -11,6 +13,10 @@
 ```ts
 // afterBuild.config.ts afterBuild.config.local.ts
 import {defineConfig} from '@whitekite/vite-plugin-after-build'
+
+or
+
+import {defineConfig} from '@whitekite/unplugin-after-build'
 
 export default defineConfig({
     compress: 'gzip',
