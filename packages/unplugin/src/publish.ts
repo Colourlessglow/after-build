@@ -1,5 +1,6 @@
 import Client from 'ssh2-sftp-client'
 import { AfterBuildConfig } from './config'
+import consola from 'consola'
 
 const checkEnv = (pluginConfig: AfterBuildConfig) => {
   const publishEnv = pluginConfig.publishType
@@ -25,7 +26,7 @@ export const publish = (outputPath: string, pluginConfig: AfterBuildConfig) => {
   if (!pluginConfig.enablePublish) {
     return Promise.resolve()
   }
-  console.info('开始部署打包文件')
+  consola.info('开始部署打包文件')
   const envMap = checkEnv(pluginConfig)
   if (!envMap?.size) {
     return Promise.reject()
@@ -47,12 +48,12 @@ export const publish = (outputPath: string, pluginConfig: AfterBuildConfig) => {
     })
     .then(() => client.uploadDir(outputPath, clientRootPath))
     .then((msg) => {
-      console.info(msg)
-      console.info('部署打包文件成功')
+      consola.info(msg)
+      consola.success('部署打包文件成功')
     })
-    .catch((err) => console.error(err.message))
+    .catch((err) => consola.error(err.message))
     .finally(() => {
-      console.info('部署服务结束')
+      consola.info('部署服务结束')
       return client.end()
     })
 }

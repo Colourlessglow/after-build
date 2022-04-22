@@ -15,7 +15,7 @@ const afterBuildPlugin = createUnplugin((objectConfig?: AfterBuildFullConfig) =>
       console.error('outputPath is null')
       return Promise.resolve()
     }
-    const pluginConfig = new AfterBuildConfig(env, objectConfig)
+    const pluginConfig = new AfterBuildConfig(env, mode, objectConfig)
     return compress(outputPath, pluginConfig)
       .then(() => publish(outputPath as string, pluginConfig))
       .then(() => zip(outputPath as string, pluginConfig.mode || mode, pluginConfig))
@@ -24,6 +24,7 @@ const afterBuildPlugin = createUnplugin((objectConfig?: AfterBuildFullConfig) =>
     name: 'after-build',
     enforce: 'post',
     vite: {
+      apply: 'build',
       configResolved(config) {
         mode = config.mode
         outputPath = path.isAbsolute(config.build.outDir)
@@ -38,7 +39,10 @@ const afterBuildPlugin = createUnplugin((objectConfig?: AfterBuildFullConfig) =>
       env = process.env
       outputPath = compiler.options.output.path
       mode = compiler.options.mode as string
-      compiler.hooks.done.tapPromise('after-build', async () => {
+      if (env.NODE_ENV !== 'production') {
+        return
+      }
+      compiler.hooks.afterEmit.tapPromise('after-build', async () => {
         await createAfterBuildPlugin()
       })
     },

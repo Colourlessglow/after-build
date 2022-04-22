@@ -1,9 +1,21 @@
 import _jiti, { JITI } from 'jiti'
 import fs from 'fs-extra'
 import path from 'path'
+import merge from 'lodash.merge'
 import { AfterBuildCompressType, AfterBuildFullConfig, AfterBuildPublishType } from './interface'
+const extname = ['js', 'mjs', 'ts', 'cjs']
+const afterBuildFile = ['afterBuild.config']
 
-const afterBuildFile = ['afterBuild.config.ts', 'afterBuild.config.local.ts']
+const makeAfterBuildFile = (file: string[]) => {
+  const realFile = [...afterBuildFile, ...file]
+  const realFilepath: string[] = []
+  realFile.forEach((item) => {
+    extname.forEach((ext) => {
+      realFilepath.push(`${item}.${ext}`)
+    })
+  })
+  return realFilepath
+}
 
 function getConfig(jiti: JITI, configPath: string, env: Record<string, any>) {
   const _config = jiti(configPath).default
@@ -16,19 +28,16 @@ function getConfig(jiti: JITI, configPath: string, env: Record<string, any>) {
   return _config
 }
 
-function loadConfig(env: Record<string, any>) {
+function loadConfigs(env: Record<string, any>, mode: string) {
   const jiti = _jiti(undefined as any, { requireCache: false, cache: false, v8cache: false })
   let config: AfterBuildFullConfig = {}
-  afterBuildFile.forEach((item) => {
+  makeAfterBuildFile([`afterBuild.${mode}`]).forEach((item) => {
     const configPath = path.resolve(process.cwd(), item)
     if (!fs.existsSync(configPath)) {
       return
     }
 
-    config = {
-      ...config,
-      ...getConfig(jiti, configPath, env),
-    }
+    config = merge(config, getConfig(jiti, configPath, env))
   })
   return config
 }
@@ -39,8 +48,8 @@ function loadConfig(env: Record<string, any>) {
 export class AfterBuildConfig {
   config: AfterBuildFullConfig
 
-  constructor(env, config?: AfterBuildFullConfig) {
-    this.config = config || loadConfig(env)
+  constructor(env, mode: string, config: AfterBuildFullConfig = {}) {
+    this.config = merge(config, loadConfigs(env, mode))
   }
 
   get enableBackup() {

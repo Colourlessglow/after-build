@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import JSZip from 'jszip'
 import dayJs from 'dayjs'
 import { AfterBuildConfig } from './config'
-
+import consola from 'consola'
 export function readAllFile(jsZip: JSZip, root: string) {
   try {
     // dir
@@ -27,7 +27,7 @@ const zip = (outputPath: string, mode: string, pluginConfig: AfterBuildConfig) =
   if (!pluginConfig.enableBackup) {
     return Promise.resolve()
   }
-  console.info('打包文件备份压缩开始')
+  consola.info('打包文件备份压缩开始')
   const zipSaveDirectoryPath = path.join(process.cwd(), '/', 'build-backup')
   if (!fs.existsSync(zipSaveDirectoryPath)) {
     fs.mkdirSync(zipSaveDirectoryPath)
@@ -56,13 +56,13 @@ const zip = (outputPath: string, mode: string, pluginConfig: AfterBuildConfig) =
     })
     .then((content) => fs.writeFile(`${zipSavePath}/${zipSaveName}.zip`, content, 'utf-8'))
     .then(() => {
-      console.info('打包文件备份压缩成功')
+      consola.success('打包文件备份压缩成功')
     })
     .catch((error) => {
-      console.error(error)
+      consola.error(error)
     })
     .finally(() => {
-      console.info('打包文件备份压缩结束')
+      consola.info('打包文件备份压缩结束')
     })
 }
 export default zip

@@ -2,6 +2,7 @@ import fs from 'fs-extra'
 import zlib from 'zlib'
 import { readAllFile } from './utils'
 import { AfterBuildConfig } from './config'
+import consola from 'consola'
 
 const mtimeCache = new Map<string, number>()
 const extRE = /\.(js|mjs|json|css|html)$/i
@@ -52,7 +53,7 @@ export const compress = (outputPath: string, pluginConfig: AfterBuildConfig) => 
   if (!pluginConfig.enableCompress) {
     return Promise.resolve()
   }
-  console.info('代码压缩开始')
+  consola.info('代码压缩开始')
   let files = readAllFile(outputPath) || []
 
   if (!files.length) return Promise.reject()
@@ -73,12 +74,11 @@ export const compress = (outputPath: string, pluginConfig: AfterBuildConfig) => 
         await brotli(content, filePath)
       }
     } catch (error) {
-      console.error('compress error:' + filePath)
+      consola.error('compress error:' + filePath)
     }
 
     mtimeCache.set(filePath, Date.now())
   })
-  console.info('test')
 
-  return Promise.all(handles).finally(() => console.info('代码压缩成功'))
+  return Promise.all(handles).finally(() => consola.success('代码压缩成功'))
 }

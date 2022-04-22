@@ -1,6 +1,6 @@
 {
-  "name": "@whitekite/vite-plugin-after-build",
-  "version": "0.0.14",
+  "name": "@whitekite/vue-cli-plugin-after-build",
+  "version": "0.0.1",
   "license": "MIT",
   "author": {
     "name": "whitekite",
@@ -28,5 +28,8 @@
   },
   "dependencies": {
     "@whitekite/unplugin-after-build": "workspace:*"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.4"
   }
 }

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@whitekite/vue-cli-plugin-after-build": "workspace:*",
     "@whitekite/unplugin-after-build": "workspace:*",
     "@vue/cli-service": "^5.0.4",
     "@vue/cli-plugin-typescript": "^5.0.4",

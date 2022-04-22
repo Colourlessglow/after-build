@@ -6,7 +6,23 @@
 
 提供自动部署，代码压缩，代码备份功能
 
-### Example
+### 插件安装
+
+```ts
+import plugin from '@whitekite/vite-plugin-after-build'
+
+export default {
+  plugins: [plugin({mode: 'build-test'})]
+}
+```
+
+### 设置
+
+- 设置默认使用 afterBuild.config.[ext]
+- 可根据 设置的不同mode使用 afterBuild.[mode].[ext]
+
+
+### 设置示例
 
 ```ts
 // afterBuild.config.ts afterBuild.config.local.ts
