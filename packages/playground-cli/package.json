@@ -1,0 +1,15 @@
+{
+  "name": "playground-cli",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@whitekite/unplugin-after-build": "workspace:*",
+    "@vue/cli-service": "^5.0.4",
+    "@vue/cli-plugin-typescript": "^5.0.4",
+    "vue": "^3.2.33"
+  },
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "cli:build": "vue-cli-service build --mode build-test --no-module"
+  }
+}

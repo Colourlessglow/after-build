@@ -1,0 +1,38 @@
+{
+  "name": "@whitekite/unplugin-after-build",
+  "version": "0.0.2",
+  "license": "MIT",
+  "author": {
+    "name": "whitekite",
+    "email": "1075790909@qq.com"
+  },
+  "sideEffects": false,
+  "homepage": "https://gitee.com/white-kite/vite-plugin-after-build/blob/master/README.md",
+  "repository": "https://gitee.com/white-kite/vite-plugin-after-build",
+  "scripts": {
+    "build": "tsup-node",
+    "dev": "tsup-node --watch"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "jszip": "^3.9.1",
+    "dayjs": "^1.11.1",
+    "ssh2-sftp-client": "^7.2.3",
+    "zlib": "^1.0.5",
+    "fs-extra": "^10.1.0",
+    "jiti": "^1.13.0",
+    "c12": "^0.2.7"
+  }
+}
