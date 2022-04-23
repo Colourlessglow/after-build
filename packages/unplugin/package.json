@@ -1,6 +1,6 @@
 {
   "name": "@whitekite/unplugin-after-build",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "license": "MIT",
   "author": {
     "name": "whitekite",
@@ -15,9 +15,6 @@
   "main": "./index.js",
   "module": "./index.mjs",
   "types": "./index.d.ts",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "import": "./index.mjs",
