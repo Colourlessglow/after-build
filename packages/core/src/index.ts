@@ -19,7 +19,7 @@ export const createAfterBuild = ({
   mode = 'production',
   config,
   outputPath,
-  env = process.env,
+  env,
 }: ICreateAfterBuild) => {
   if (!outputPath) {
     console.error('outputPath is null')

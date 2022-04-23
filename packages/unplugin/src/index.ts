@@ -7,7 +7,7 @@ const afterBuildPlugin = createUnplugin((objectConfig?: AfterBuildFullConfig) =>
   let mode: string
   let env: Record<string, any>
   const createAfterBuildPlugin = () => {
-    return createAfterBuild({ mode, outputPath, env, objectConfig })
+    return createAfterBuild({ mode, outputPath, env, config: objectConfig })
   }
   return {
     name: 'after-build',

@@ -3,6 +3,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import merge from 'lodash.merge'
 import { AfterBuildCompressType, AfterBuildFullConfig, AfterBuildPublishType } from './interface'
+import { loadDotEnv } from './dotenv'
 const extname = ['js', 'mjs', 'ts', 'cjs']
 const afterBuildFile = ['afterBuild.config']
 
@@ -31,6 +32,7 @@ function getConfig(jiti: JITI, configPath: string, env: Record<string, any>) {
 function loadConfigs(env: Record<string, any>, mode: string) {
   const jiti = _jiti(undefined as any, { requireCache: false, cache: false, v8cache: false })
   let config: AfterBuildFullConfig = {}
+  config.mode = mode
   makeAfterBuildFile([`afterBuild.${mode}`]).forEach((item) => {
     const configPath = path.resolve(process.cwd(), item)
     if (!fs.existsSync(configPath)) {
@@ -49,7 +51,8 @@ export class AfterBuildConfig {
   config: AfterBuildFullConfig
 
   constructor(env, mode: string, config: AfterBuildFullConfig = {}) {
-    this.config = merge(config, loadConfigs(env, mode))
+    const realEnv = env || loadDotEnv(mode)
+    this.config = merge(config, loadConfigs(realEnv, mode))
   }
 
   get enableBackup() {

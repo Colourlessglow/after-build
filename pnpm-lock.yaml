@@ -8,6 +8,7 @@ importers:
       '@types/fs-extra': ^9.0.13
       '@types/lodash.merge': ^4.6.7
       '@types/node': ^16.11.7
+      '@types/prompts': ^2.0.14
       '@types/ssh2-sftp-client': ^7.0.1
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
@@ -25,6 +26,7 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/lodash.merge': 4.6.7
       '@types/node': 16.11.25
+      '@types/prompts': 2.0.14
       '@types/ssh2-sftp-client': registry.npmmirror.com/@types/ssh2-sftp-client/7.0.1
       '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/5.20.0_eslint@8.13.0+typescript@4.6.3
@@ -40,21 +42,29 @@ importers:
 
   packages/core:
     specifiers:
+      '@whitekite/utils': ^0.3.7
+      cac: ^6.7.12
       consola: ^2.15.3
       dayjs: ^1.11.1
+      dotenv: ^16.0.0
       fs-extra: ^10.1.0
       jiti: ^1.13.0
       jszip: ^3.9.1
       lodash.merge: ^4.6.2
+      prompts: ^2.4.2
       ssh2-sftp-client: ^7.2.3
       zlib: ^1.0.5
     dependencies:
+      '@whitekite/utils': 0.3.7
+      cac: 6.7.12
       consola: 2.15.3
       dayjs: 1.11.1
+      dotenv: 16.0.0
       fs-extra: 10.1.0
       jiti: 1.13.0
       jszip: 3.9.1
       lodash.merge: 4.6.2
+      prompts: 2.4.2
       ssh2-sftp-client: 7.2.3
       zlib: 1.0.5
 
@@ -62,13 +72,13 @@ importers:
     specifiers:
       '@vue/cli-plugin-typescript': ^5.0.4
       '@vue/cli-service': ^5.0.4
-      '@whitekite/unplugin-after-build': workspace:*
+      '@whitekite/after-build': workspace:*
       '@whitekite/vue-cli-plugin-after-build': workspace:*
       vue: ^3.2.33
     dependencies:
       '@vue/cli-plugin-typescript': registry.npmmirror.com/@vue/cli-plugin-typescript/5.0.4_d6f72f977e321419f7e5941c551d9710
       '@vue/cli-service': registry.npmmirror.com/@vue/cli-service/5.0.4
-      '@whitekite/unplugin-after-build': link:../unplugin
+      '@whitekite/after-build': link:../core
       '@whitekite/vue-cli-plugin-after-build': link:../vue-cli
       vue: registry.npmmirror.com/vue/3.2.33
 
@@ -610,6 +620,12 @@ packages:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: true
 
+  /@types/prompts/2.0.14:
+    resolution: {integrity: sha512-HZBd99fKxRWpYCErtm2/yxUZv6/PBI9J7N4TNFffl5JbrYMHBwF25DjQGTW3b3jmXq+9P6/8fCIb2ee57BFfYA==}
+    dependencies:
+      '@types/node': 16.11.25
+    dev: true
+
   /@types/qs/6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: true
@@ -920,6 +936,14 @@ packages:
       '@xtuc/long': 4.2.2
     dev: true
 
+  /@whitekite/utils/0.3.7:
+    resolution: {integrity: sha512-GJz5fXuWRDUFMSl6IuEpvIN4aFOHALyTwGiLZmyl03VEa0xaj+eA6XDNQ9791OfVpy1uirMTG+8DAvDlQZDfdA==}
+    dependencies:
+      csstype: 3.0.11
+      dayjs: 1.11.1
+      lodash-es: 4.17.21
+    dev: false
+
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
     dev: true
@@ -1220,6 +1244,11 @@ packages:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
     dev: true
+
+  /cac/6.7.12:
+    resolution: {integrity: sha512-rM7E2ygtMkJqD9c7WnFU6fruFcN3xe4FM5yUmgxhZzIKJk4uHl9U/fhwdajGFQbQuv43FAUo1Fe8gX/oIKDeSA==}
+    engines: {node: '>=8'}
+    dev: false
 
   /callsites/3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
@@ -1699,6 +1728,10 @@ packages:
       css-tree: 1.1.3
     dev: true
 
+  /csstype/3.0.11:
+    resolution: {integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==}
+    dev: false
+
   /dayjs/1.11.1:
     resolution: {integrity: sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==}
     dev: false
@@ -1842,6 +1875,11 @@ packages:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /dotenv/16.0.0:
+    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
+    engines: {node: '>=12'}
+    dev: false
 
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
@@ -3069,6 +3107,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /kleur/3.0.3:
+    resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
+    engines: {node: '>=6'}
+    dev: false
+
   /klona/2.0.5:
     resolution: {integrity: sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==}
     engines: {node: '>= 8'}
@@ -3130,6 +3173,10 @@ packages:
     dependencies:
       p-locate: 4.1.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.defaultsdeep/4.6.1:
     resolution: {integrity: sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==}
@@ -4122,6 +4169,14 @@ packages:
       retry: 0.12.0
     dev: false
 
+  /prompts/2.4.2:
+    resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
+    engines: {node: '>= 6'}
+    dependencies:
+      kleur: 3.0.3
+      sisteransi: 1.0.5
+    dev: false
+
   /proxy-addr/2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -4515,6 +4570,10 @@ packages:
       mrmime: 1.0.0
       totalist: 1.1.0
     dev: true
+
+  /sisteransi/1.0.5:
+    resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
+    dev: false
 
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
