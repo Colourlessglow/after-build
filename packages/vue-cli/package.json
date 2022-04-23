@@ -1,14 +1,14 @@
 {
   "name": "@whitekite/vue-cli-plugin-after-build",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": {
     "name": "whitekite",
     "email": "1075790909@qq.com"
   },
   "sideEffects": false,
-  "homepage": "https://gitee.com/white-kite/unplugin-after-build/blob/master/README.md",
-  "repository": "https://gitee.com/white-kite/unplugin-after-build",
+  "homepage": "https://gitee.com/white-kite/after-build/blob/master/README.md",
+  "repository": "https://gitee.com/white-kite/after-build",
   "scripts": {
     "build": "tsup-node",
     "dev": "tsup-node --watch"

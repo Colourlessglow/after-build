@@ -5,3 +5,7 @@ node_modules
 packages/*/dist
 packages/*/.turbo
 packages/*/.pnpm-debug.log
+packages/unplugin/*.d.ts
+packages/unplugin/*.js
+packages/unplugin/*.mjs
+packages/playground-cli/build-backup

@@ -9,8 +9,8 @@
 提供自动部署，代码压缩，代码备份功能
 
 如需类型提示，请安装
-[@whitekite/unplugin-after-build](https://www.npmjs.com/package/@whitekite/unplugin-after-build)
+[@whitekite/after-build](https://www.npmjs.com/package/@whitekite/after-build)
 
 相关示例请参考
-[@whitekite/unplugin-after-build](https://www.npmjs.com/package/@whitekite/unplugin-after-build)
+[@whitekite/after-build](https://www.npmjs.com/package/@whitekite/after-build)
 

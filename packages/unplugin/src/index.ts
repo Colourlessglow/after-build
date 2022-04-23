@@ -1,24 +1,13 @@
 import path from 'path'
-import zip from './zip'
-import { compress } from './compress'
-import { publish } from './publish'
-import { AfterBuildConfig } from './config'
-import { AfterBuildFullConfig } from './interface'
 import { createUnplugin } from 'unplugin'
+import { createAfterBuild, AfterBuildFullConfig, defineConfig } from '@whitekite/after-build'
 
 const afterBuildPlugin = createUnplugin((objectConfig?: AfterBuildFullConfig) => {
   let outputPath: string | undefined
   let mode: string
   let env: Record<string, any>
   const createAfterBuildPlugin = () => {
-    if (!outputPath) {
-      console.error('outputPath is null')
-      return Promise.resolve()
-    }
-    const pluginConfig = new AfterBuildConfig(env, mode, objectConfig)
-    return compress(outputPath, pluginConfig)
-      .then(() => publish(outputPath as string, pluginConfig))
-      .then(() => zip(outputPath as string, pluginConfig.mode || mode, pluginConfig))
+    return createAfterBuild({ mode, outputPath, env, objectConfig })
   }
   return {
     name: 'after-build',
@@ -49,8 +38,4 @@ const afterBuildPlugin = createUnplugin((objectConfig?: AfterBuildFullConfig) =>
   }
 })
 
-export { defineConfig } from './config'
-
-export { type AfterBuildFullConfig }
-
-export { afterBuildPlugin }
+export { type AfterBuildFullConfig, defineConfig, afterBuildPlugin }

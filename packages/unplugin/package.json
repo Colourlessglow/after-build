@@ -1,39 +1,42 @@
 {
   "name": "@whitekite/unplugin-after-build",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "author": {
     "name": "whitekite",
     "email": "1075790909@qq.com"
   },
   "sideEffects": false,
-  "homepage": "https://gitee.com/white-kite/unplugin-after-build/blob/master/README.md",
-  "repository": "https://gitee.com/white-kite/unplugin-after-build",
+  "homepage": "https://gitee.com/white-kite/after-build/blob/master/README.md",
+  "repository": "https://gitee.com/white-kite/after-build",
   "scripts": {
-    "build": "tsup-node",
-    "dev": "tsup-node --watch"
+    "build": "unbuild"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./index.mjs",
+      "require": "./index.js",
+      "types": "./index.d.ts"
+    },
+    "./vite": {
+      "import": "./vite.mjs",
+      "require": "./vite.js",
+      "types": "./vite.d.ts"
+    },
+    "./webpack": {
+      "import": "./webpack.mjs",
+      "require": "./webpack.js",
+      "types": "./webpack.d.ts"
     }
   },
   "dependencies": {
-    "jszip": "^3.9.1",
-    "dayjs": "^1.11.1",
-    "ssh2-sftp-client": "^7.2.3",
-    "zlib": "^1.0.5",
-    "fs-extra": "^10.1.0",
-    "jiti": "^1.13.0",
-    "consola": "^2.15.3",
-    "lodash.merge": "^4.6.2"
+    "unplugin": "^0.6.2",
+    "@whitekite/after-build": "workspace:*"
   }
 }
