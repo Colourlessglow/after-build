@@ -10,7 +10,8 @@
   "homepage": "https://gitee.com/white-kite/after-build/blob/master/README.md",
   "repository": "https://gitee.com/white-kite/after-build",
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "release": "standard-version"
   },
   "main": "./index.js",
   "module": "./index.mjs",
@@ -35,5 +36,12 @@
   "dependencies": {
     "unplugin": "^0.6.2",
     "@whitekite/after-build": "workspace:*"
+  },
+  "standard-version": {
+    "skip": {
+      "commit": true,
+      "tag": true,
+      "changelog": true
+    }
   }
 }

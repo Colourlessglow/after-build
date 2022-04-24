@@ -11,7 +11,7 @@
   "repository": "https://gitee.com/white-kite/after-build",
   "scripts": {
     "build": "turbo run build",
-    "release": "standard-version"
+    "release": "turbo run release"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
