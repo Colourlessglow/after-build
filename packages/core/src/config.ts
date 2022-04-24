@@ -52,7 +52,7 @@ export class AfterBuildConfig {
 
   constructor(env, mode: string, config: AfterBuildFullConfig = {}) {
     const realEnv = env || loadDotEnv(mode)
-    this.config = merge(config, loadConfigs(realEnv, mode))
+    this.config = merge(loadConfigs(realEnv, mode),config)
   }
 
   get enableBackup() {

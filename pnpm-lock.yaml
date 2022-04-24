@@ -42,7 +42,6 @@ importers:
 
   packages/core:
     specifiers:
-      '@whitekite/utils': ^0.3.7
       cac: ^6.7.12
       consola: ^2.15.3
       dayjs: ^1.11.1
@@ -55,7 +54,6 @@ importers:
       ssh2-sftp-client: ^7.2.3
       zlib: ^1.0.5
     dependencies:
-      '@whitekite/utils': 0.3.7
       cac: 6.7.12
       consola: 2.15.3
       dayjs: 1.11.1
@@ -936,14 +934,6 @@ packages:
       '@xtuc/long': 4.2.2
     dev: true
 
-  /@whitekite/utils/0.3.7:
-    resolution: {integrity: sha512-GJz5fXuWRDUFMSl6IuEpvIN4aFOHALyTwGiLZmyl03VEa0xaj+eA6XDNQ9791OfVpy1uirMTG+8DAvDlQZDfdA==}
-    dependencies:
-      csstype: 3.0.11
-      dayjs: 1.11.1
-      lodash-es: 4.17.21
-    dev: false
-
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
     dev: true
@@ -1727,10 +1717,6 @@ packages:
     dependencies:
       css-tree: 1.1.3
     dev: true
-
-  /csstype/3.0.11:
-    resolution: {integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==}
-    dev: false
 
   /dayjs/1.11.1:
     resolution: {integrity: sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==}
@@ -3173,10 +3159,6 @@ packages:
     dependencies:
       p-locate: 4.1.0
     dev: true
-
-  /lodash-es/4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
 
   /lodash.defaultsdeep/4.6.1:
     resolution: {integrity: sha512-3j8wdDzYuWO3lM3Reg03MuQR957t287Rpcxp1njpEa8oDrikb+FwGdW3n+FELh/A6qib6yPit0j/pv9G/yeAqA==}
