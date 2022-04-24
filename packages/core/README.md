@@ -70,3 +70,13 @@ package.json
 }
 
 ```
+
+### 命令行执行
+package.json
+```json
+{
+  "scripts": {
+    "cli:afterBuild": "whitekite-after-build run --mode build-test --compress.gzip --compress.br --backup web --outputPath /file-path"
+  }
+}
+```

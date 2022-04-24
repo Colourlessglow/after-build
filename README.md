@@ -58,3 +58,25 @@ export default defineConfig((env) => ({
   }
 }))
 ```
+
+### 推送回滚
+package.json
+```json
+
+{
+  "scripts": {
+    "cli:rollback": "whitekite-after-build rollback --mode build-test --version 2022042322285"
+  }
+}
+
+```
+
+### 命令行执行
+package.json
+```json
+{
+  "scripts": {
+    "cli:afterBuild": "whitekite-after-build run --mode build-test --compress.gzip --compress.br --backup web --outputPath /file-path"
+  }
+}
+```

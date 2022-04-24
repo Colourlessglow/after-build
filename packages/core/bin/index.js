@@ -1,2 +1,5 @@
 #!/usr/bin/env node
-require('../dist/cli')
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { createAfterBuildCli } = require('../dist')
+createAfterBuildCli()
