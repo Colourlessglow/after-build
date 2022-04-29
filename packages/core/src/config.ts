@@ -52,7 +52,7 @@ export class AfterBuildConfig {
 
   constructor(env, mode: string, config: AfterBuildFullConfig = {}) {
     const realEnv = env || loadDotEnv(mode)
-    this.config = merge(loadConfigs(realEnv, mode),config)
+    this.config = merge(loadConfigs(realEnv, mode), config)
   }
 
   get enableBackup() {
@@ -100,6 +100,10 @@ export class AfterBuildConfig {
 
   get publishType() {
     return this.config.publish as AfterBuildPublishType
+  }
+
+  get enableExperimentZipUpload() {
+    return !!this.config.publish?.zipUpload
   }
 
   get mode() {

@@ -53,6 +53,7 @@ importers:
       jszip: ^3.9.1
       lodash.merge: ^4.6.2
       prompts: ^2.4.2
+      ssh2: ^1.10.0
       ssh2-sftp-client: ^8.0.0
       zlib: ^1.0.5
     dependencies:
@@ -65,6 +66,7 @@ importers:
       jszip: 3.9.1
       lodash.merge: 4.6.2
       prompts: 2.4.2
+      ssh2: 1.10.0
       ssh2-sftp-client: registry.npmmirror.com/ssh2-sftp-client/8.0.0
       zlib: 1.0.5
 
@@ -1104,6 +1106,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /asn1/0.2.6:
+    resolution: {integrity: sha512-ix/FxPn0MDjeyJ7i/yoHGFt/EX6LyNbxSEhPPXODPL+KB0VPk86UYfL0lMdy+KCnv+fmvIzySwaK5COwqVbWTQ==}
+    dependencies:
+      safer-buffer: 2.1.2
+    dev: false
+
   /async/2.6.4:
     resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
     dependencies:
@@ -1142,6 +1150,12 @@ packages:
   /batch/0.6.1:
     resolution: {integrity: sha1-3DQxT05nkxgJP8dgJyUl+UvyXBY=}
     dev: true
+
+  /bcrypt-pbkdf/1.0.2:
+    resolution: {integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=}
+    dependencies:
+      tweetnacl: 0.14.5
+    dev: false
 
   /big.js/5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
@@ -1225,6 +1239,12 @@ packages:
       base64-js: 1.5.1
       ieee754: 1.2.1
     dev: true
+
+  /buildcheck/0.0.3:
+    resolution: {integrity: sha512-pziaA+p/wdVImfcbsZLNF32EiWyujlQLwolMqUQE8xpKNOH7KmZQaY8sXN7DGOEzPAElo9QTaeNRfGnf3iOJbA==}
+    engines: {node: '>=10.0.0'}
+    dev: false
+    optional: true
 
   /builtin-modules/3.2.0:
     resolution: {integrity: sha512-lGzLKcioL90C7wMczpkY0n/oART3MbBa8R9OFGE1rJxoVI86u4WAGfEk8Wjv10eKSyTHVGkSo3bvBylCEtk7LA==}
@@ -1728,6 +1748,16 @@ packages:
       path-type: 4.0.0
       yaml: 1.10.2
     dev: true
+
+  /cpu-features/0.0.4:
+    resolution: {integrity: sha512-fKiZ/zp1mUwQbnzb9IghXtHtDoTMtNeb8oYGx6kX2SYfhnG0HNdBEBIzB9b5KlXu5DQPhfy3mInbBxFcgwAr3A==}
+    engines: {node: '>=10.0.0'}
+    requiresBuild: true
+    dependencies:
+      buildcheck: 0.0.3
+      nan: 2.15.0
+    dev: false
+    optional: true
 
   /cross-spawn/6.0.5:
     resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==}
@@ -3868,6 +3898,11 @@ packages:
       thenify-all: 1.6.0
     dev: true
 
+  /nan/2.15.0:
+    resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    dev: false
+    optional: true
+
   /nanoid/3.3.1:
     resolution: {integrity: sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -4939,7 +4974,6 @@ packages:
 
   /safer-buffer/2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
-    dev: true
 
   /schema-utils/3.1.1:
     resolution: {integrity: sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw==}
@@ -5216,6 +5250,18 @@ packages:
     dependencies:
       readable-stream: 3.6.0
     dev: true
+
+  /ssh2/1.10.0:
+    resolution: {integrity: sha512-OnKAAmf4j8wCRrXXZv3Tp5lCZkLJZtgZbn45ELiShCg27djDQ3XFGvIzuGsIsf4hdHslP+VdhA9BhUQdTdfd9w==}
+    engines: {node: '>=10.16.0'}
+    requiresBuild: true
+    dependencies:
+      asn1: 0.2.6
+      bcrypt-pbkdf: 1.0.2
+    optionalDependencies:
+      cpu-features: 0.0.4
+      nan: 2.15.0
+    dev: false
 
   /ssri/8.0.1:
     resolution: {integrity: sha512-97qShzy1AiyxvPNIkLWoGua7xoQzzPjQ0HAH4B0rWKo7SZ6USuPcrUiAFrws0UH8RrbWmgq3LMTObhPIHbbBeQ==}
@@ -5599,6 +5645,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /tweetnacl/0.14.5:
+    resolution: {integrity: sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=}
+    dev: false
 
   /type-fest/0.18.1:
     resolution: {integrity: sha512-OIAYXk8+ISY+qTOwkHtKqzAuxchoMiD9Udx+FSGQDuiRR+PJKJHc2NJAXlbhkGwTt/4/nKZxELY1w3ReWOL8mw==}
@@ -7537,14 +7587,6 @@ packages:
     version: 2.1.0
     engines: {node: '>=8'}
 
-  registry.npmmirror.com/asn1/0.2.6:
-    resolution: {integrity: sha512-ix/FxPn0MDjeyJ7i/yoHGFt/EX6LyNbxSEhPPXODPL+KB0VPk86UYfL0lMdy+KCnv+fmvIzySwaK5COwqVbWTQ==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/asn1/-/asn1-0.2.6.tgz}
-    name: asn1
-    version: 0.2.6
-    dependencies:
-      safer-buffer: registry.npmmirror.com/safer-buffer/2.1.2
-    dev: false
-
   registry.npmmirror.com/async/2.6.4:
     resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/async/-/async-2.6.4.tgz}
     name: async
@@ -7612,14 +7654,6 @@ packages:
     resolution: {integrity: sha512-x+VAiMRL6UPkx+kudNvxTl6hB2XNNCG2r+7wixVfIYwu/2HKRXimwQyaumLjMveWvT2Hkd/cAJw+QBMfJ/EKVw==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/batch/-/batch-0.6.1.tgz}
     name: batch
     version: 0.6.1
-    dev: false
-
-  registry.npmmirror.com/bcrypt-pbkdf/1.0.2:
-    resolution: {integrity: sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz}
-    name: bcrypt-pbkdf
-    version: 1.0.2
-    dependencies:
-      tweetnacl: registry.npmmirror.com/tweetnacl/0.14.5
     dev: false
 
   registry.npmmirror.com/big.js/5.2.2:
@@ -7727,14 +7761,6 @@ packages:
       base64-js: registry.npmmirror.com/base64-js/1.5.1
       ieee754: registry.npmmirror.com/ieee754/1.2.1
     dev: false
-
-  registry.npmmirror.com/buildcheck/0.0.3:
-    resolution: {integrity: sha512-pziaA+p/wdVImfcbsZLNF32EiWyujlQLwolMqUQE8xpKNOH7KmZQaY8sXN7DGOEzPAElo9QTaeNRfGnf3iOJbA==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/buildcheck/-/buildcheck-0.0.3.tgz}
-    name: buildcheck
-    version: 0.0.3
-    engines: {node: '>=10.0.0'}
-    dev: false
-    optional: true
 
   registry.npmmirror.com/bundle-require/3.0.4_esbuild@0.14.38:
     resolution: {integrity: sha512-VXG6epB1yrLAvWVQpl92qF347/UXmncQj7J3U8kZEbdVZ1ZkQyr4hYeL/9RvcE8vVVdp53dY78Fd/3pqfRqI1A==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/bundle-require/-/bundle-require-3.0.4.tgz}
@@ -8168,18 +8194,6 @@ packages:
       path-type: registry.npmmirror.com/path-type/4.0.0
       yaml: registry.npmmirror.com/yaml/1.10.2
     dev: false
-
-  registry.npmmirror.com/cpu-features/0.0.4:
-    resolution: {integrity: sha512-fKiZ/zp1mUwQbnzb9IghXtHtDoTMtNeb8oYGx6kX2SYfhnG0HNdBEBIzB9b5KlXu5DQPhfy3mInbBxFcgwAr3A==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/cpu-features/-/cpu-features-0.0.4.tgz}
-    name: cpu-features
-    version: 0.0.4
-    engines: {node: '>=10.0.0'}
-    requiresBuild: true
-    dependencies:
-      buildcheck: registry.npmmirror.com/buildcheck/0.0.3
-      nan: registry.npmmirror.com/nan/2.15.0
-    dev: false
-    optional: true
 
   registry.npmmirror.com/cross-spawn/5.1.0:
     resolution: {integrity: sha512-pTgQJ5KC0d2hcY8eyL1IzlBPYjTkyH72XRZPnLyKus2mBfNjQs3klqbJU2VILqZryAZUt9JOb3h/mWMy23/f5A==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/cross-spawn/-/cross-spawn-5.1.0.tgz}
@@ -10288,13 +10302,6 @@ packages:
       object-assign: registry.npmmirror.com/object-assign/4.1.1
       thenify-all: registry.npmmirror.com/thenify-all/1.6.0
 
-  registry.npmmirror.com/nan/2.15.0:
-    resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/nan/-/nan-2.15.0.tgz}
-    name: nan
-    version: 2.15.0
-    dev: false
-    optional: true
-
   registry.npmmirror.com/nanoid/3.3.1:
     resolution: {integrity: sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/nanoid/-/nanoid-3.3.1.tgz}
     name: nanoid
@@ -11867,21 +11874,7 @@ packages:
     dependencies:
       concat-stream: registry.npmmirror.com/concat-stream/2.0.0
       promise-retry: registry.npmmirror.com/promise-retry/2.0.1
-      ssh2: registry.npmmirror.com/ssh2/1.9.0
-    dev: false
-
-  registry.npmmirror.com/ssh2/1.9.0:
-    resolution: {integrity: sha512-rhhIZT0eMPvCBSOG8CpqZZ7gre2vgXaIqmb3Jb83t88rjsxIsFzDanqBJM9Ns8BmP1835A5IbQ199io4EUZwOA==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/ssh2/-/ssh2-1.9.0.tgz}
-    name: ssh2
-    version: 1.9.0
-    engines: {node: '>=10.16.0'}
-    requiresBuild: true
-    dependencies:
-      asn1: registry.npmmirror.com/asn1/0.2.6
-      bcrypt-pbkdf: registry.npmmirror.com/bcrypt-pbkdf/1.0.2
-    optionalDependencies:
-      cpu-features: registry.npmmirror.com/cpu-features/0.0.4
-      nan: registry.npmmirror.com/nan/2.15.0
+      ssh2: 1.10.0
     dev: false
 
   registry.npmmirror.com/ssri/8.0.1:
@@ -12307,12 +12300,6 @@ packages:
       turbo-windows-32: 1.2.5
       turbo-windows-64: 1.2.5
     dev: true
-
-  registry.npmmirror.com/tweetnacl/0.14.5:
-    resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/tweetnacl/-/tweetnacl-0.14.5.tgz}
-    name: tweetnacl
-    version: 0.14.5
-    dev: false
 
   registry.npmmirror.com/type-check/0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==, registry: https://packages.aliyun.com/6183ac66041d450d2c25202d/npm/npm-registry/, tarball: https://registry.npmmirror.com/type-check/-/type-check-0.4.0.tgz}

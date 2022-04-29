@@ -12,6 +12,6 @@
     "dev": "vue-cli-service serve",
     "cli:build": "vue-cli-service build --mode build-test --no-module",
     "build:rollback": "whitekite-after-build rollback --mode build-test",
-    "cli:after-build": "whitekite-after-build run --mode build-test --compress.gzip --compress.br --backup web --outputPath /Users/xuxinjie/Devlop/Documents/WebStormProjects/lib/unplugin-after-build/packages/playground-cli/dist"
+    "cli:after-build": "whitekite-after-build run --mode build-test --compress.gzip --compress.br --backup web --outputPath /Users/xuxinjie/WebstormProjects/lib/unplugin-after-build/packages/playground-cli/dist"
   }
 }

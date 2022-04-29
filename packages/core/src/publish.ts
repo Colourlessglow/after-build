@@ -1,7 +1,7 @@
-import Client from 'ssh2-sftp-client'
 import { AfterBuildConfig } from './config'
 import consola from 'consola'
-
+import { SSHNode } from './helper'
+import Client from 'ssh2-sftp-client'
 const checkEnv = (pluginConfig: AfterBuildConfig) => {
   const publishEnv = pluginConfig.publishType
   const publishNeedEnvList = ['user', 'port', 'password', 'host', 'path'] as const
@@ -31,7 +31,10 @@ export const publish = (outputPath: string, pluginConfig: AfterBuildConfig) => {
   if (!envMap?.size) {
     return Promise.reject()
   }
-  const client = new Client()
+  let client: Client | SSHNode = new Client()
+  if (pluginConfig.enableExperimentZipUpload) {
+    client = new SSHNode()
+  }
   const clientRootPath = envMap.get('path') as string
   return client
     .connect({
@@ -44,7 +47,7 @@ export const publish = (outputPath: string, pluginConfig: AfterBuildConfig) => {
       if (await client.exists(clientRootPath)) {
         await client.rmdir(clientRootPath, true)
       }
-      await client.mkdir(clientRootPath)
+      await client.mkdir(clientRootPath, true)
     })
     .then(() => client.uploadDir(outputPath, clientRootPath))
     .then((msg) => {

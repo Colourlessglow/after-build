@@ -1,6 +1,6 @@
 {
   "name": "@whitekite/after-build",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "author": {
     "name": "whitekite",
@@ -41,7 +41,8 @@
     "lodash.merge": "^4.6.2",
     "dotenv": "^16.0.0",
     "cac": "^6.7.12",
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "ssh2": "^1.10.0"
   },
   "standard-version": {
     "skip": {

@@ -8,16 +8,16 @@
 import {createAfterBuild} from '@whitekite/after-build'
 
 createAfterBuild({
-  // 可选，可用于配置不同环境的不同部署服务器,
-  // 默认：production
-  mode: 'build-test',
-  // 可选，借助 dotenv为配置文件提供环境变量
-  env: process.env,
-  // 开启本工具任何功能时，该选项都为必填
-  outputPath: "/User/outputPath",
-  // 可选 ,详见 AfterBuildFullConfig
-  // 在未使用配置文件的情况下，提供默认设置
-  config: {}
+    // 可选，可用于配置不同环境的不同部署服务器,
+    // 默认：production
+    mode: 'build-test',
+    // 可选，借助 dotenv为配置文件提供环境变量
+    env: process.env,
+    // 开启本工具任何功能时，该选项都为必填
+    outputPath: "/User/outputPath",
+    // 可选 ,详见 AfterBuildFullConfig
+    // 在未使用配置文件的情况下，提供默认设置
+    config: {}
 })
 ```
 
@@ -33,34 +33,48 @@ createAfterBuild({
 import {defineConfig} from '@whitekite/after-build'
 
 export default defineConfig({
-  compress: 'gzip',
-  backup: 'folder-name',
-  publish: {
-    enable: true,
-    host: 'http://XXXX.XXXX.XXX',
-    port: 30,
-    user: 'root',
-    password: 'pass',
-    path: '/user/local/folder'
-  }
+    compress: 'gzip',
+    backup: 'folder-name',
+    publish: {
+        enable: true,
+        host: 'http://XXXX.XXXX.XXX',
+        port: 30,
+        user: 'root',
+        password: 'pass',
+        path: '/user/local/folder',
+        /**
+         * 代码压缩后上传至代码服务器
+         * 用于应对大型项目文件数量多导致拖慢上传速度的问题
+         * 该功能处于实验阶段，暂只支持linux服务器
+         */
+        zipUpload: true
+    }
 })
 
 export default defineConfig((env) => ({
-  compress: 'gzip',
-  backup: 'folder-name',
-  publish: {
-    enable: env.VITE_AUTO_PUBLISH,
-    host: 'http://XXXX.XXXX.XXX',
-    port: 30,
-    user: 'root',
-    password: 'pass',
-    path: '/user/local/folder'
-  }
+    compress: 'gzip',
+    backup: 'folder-name',
+    publish: {
+        enable: env.VITE_AUTO_PUBLISH,
+        host: 'http://XXXX.XXXX.XXX',
+        port: 30,
+        user: 'root',
+        password: 'pass',
+        path: '/user/local/folder',
+        /**
+         * 代码压缩后上传至代码服务器
+         * 用于应对大型项目文件数量多导致拖慢上传速度的问题
+         * 该功能处于实验阶段，暂只支持linux服务器
+         */
+        zipUpload: true
+    }
 }))
 ```
 
 ### 推送回滚
+
 package.json
+
 ```json
 
 {
@@ -72,7 +86,9 @@ package.json
 ```
 
 ### 命令行执行
+
 package.json
+
 ```json
 {
   "scripts": {

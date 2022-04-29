@@ -31,6 +31,13 @@ export interface AfterBuildPublishType {
    * 推送服务器的位置
    */
   path: string
+
+  /**
+   * 代码压缩后上传至代码服务器
+   * 用于应对大型项目文件数量多导致拖慢上传速度的问题
+   * 该功能处于实验阶段，暂只支持linux服务器
+   */
+  zipUpload?: boolean
 }
 
 export interface AfterBuildFullConfig {
