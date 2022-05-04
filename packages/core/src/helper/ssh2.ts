@@ -1,5 +1,5 @@
 import { Client, ConnectConfig, SFTPWrapper } from 'ssh2'
-import { Stats } from 'ssh2-streams'
+import type { Stats } from 'ssh2-streams'
 import { EventEmitter } from 'events'
 import { createZip } from './zip'
 import { join, parse } from 'path'
@@ -13,11 +13,20 @@ class SSHPromise {
   }
 
   make<T = any>(ca: (resolve: (...args: any) => any, reject: (...args: any) => any) => any) {
+    let hookFn: Record<string, any> = {}
     return new Promise<T>((resolve, reject) => {
       ca(resolve, reject)
-      this.client.once('close', reject)
-      this.client.once('error', reject)
-      this.client.once('end', reject)
+      hookFn.close = (err) => reject(err)
+      hookFn.error = (err) => reject(err)
+      hookFn.end = (err) => reject(err)
+      this.client.on('close', hookFn.close)
+      this.client.on('error', hookFn.error)
+      this.client.on('end', hookFn.end)
+    }).finally(() => {
+      this.client.off('close', hookFn.close)
+      this.client.off('error', hookFn.error)
+      this.client.off('end', hookFn.end)
+      hookFn = {}
     })
   }
 }
