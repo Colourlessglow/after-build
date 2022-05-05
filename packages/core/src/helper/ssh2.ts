@@ -193,7 +193,9 @@ export class SSHNode {
           reject()
           return
         }
-        hookFn['channel:close'] = () => resolve()
+        hookFn['channel:close'] = () => {
+          resolve()
+        }
         hookFn['error'] = (err) => reject(err)
         hookFn['end'] = (err) => reject(err)
         hookFn['close'] = (err) => reject(err)
@@ -225,16 +227,16 @@ export class SSHNode {
         consola.success('部署压缩包上传成功')
         consola.info('部署压缩包开始解压')
       })
-      .then(() => this.exec(`cd ${remotePath}`))
-      .then(() => this.exec('unzip distZip.zip '))
+      .then(() => this.exec(`cd ${remotePath} && unzip distZip.zip `))
       .then(() => {
         consola.success('部署压缩包解压成功')
         consola.info('正在清理部署目录')
       })
-      .then(() => this.exec('cd dist'))
-      .then(() => this.exec('mv -f * ../'))
-      .then(() => this.exec('cd ../'))
-      .then(() => this.exec('rm -rf distZip.zip  dist __MACOSX;'))
+      .then(() =>
+        this.exec(
+          `cd ${remotePath} && cd dist && mv -f * ../ && cd ../ && rm -rf distZip.zip  dist __MACOSX;`
+        )
+      )
       .then(() => `${localPath} -> ${remotePath}`)
   }
 
