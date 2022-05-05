@@ -129,8 +129,15 @@ export class SSHNode {
       onError = (err) => {
         reject(err)
       }
-      this.#client.once('ready', onReady)
-      this.#client.once('error', onError)
+      this.#client.on('ready', onReady)
+      this.#client.on('error', onError)
+    }).finally(() => {
+      this.#client.off('ready', onReady)
+      this.#client.off('error', onError)
+      // @ts-ignore
+      onReady = null
+      // @ts-ignore
+      onError = null
     })
   }
 
@@ -179,18 +186,28 @@ export class SSHNode {
   }
 
   exec(command: string) {
-    return new Promise((resolve, reject) => {
+    let hookFn: Record<string, any> = {}
+    return new Promise<void>((resolve, reject) => {
       this.#client.exec(command, (err, channel) => {
         if (err) {
           reject()
           return
         }
-        channel.end(resolve)
-        channel.once('error', reject)
-        this.#client.once('error', reject)
-        this.#client.once('end', reject)
-        this.#client.once('close', reject)
+        hookFn['channel:close'] = () => resolve()
+        hookFn['error'] = (err) => reject(err)
+        hookFn['end'] = (err) => reject(err)
+        hookFn['close'] = (err) => reject(err)
+        channel.end()
+        channel.once('close', hookFn['channel:close'])
+        this.#client.on('error', hookFn['error'])
+        this.#client.on('end', hookFn['end'])
+        this.#client.on('close', hookFn['close'])
       })
+    }).finally(() => {
+      this.#client.off('error', hookFn['error'])
+      this.#client.off('end', hookFn['end'])
+      this.#client.off('close', hookFn['close'])
+      hookFn = {}
     })
   }
 
@@ -222,10 +239,15 @@ export class SSHNode {
   }
 
   end() {
+    let hookFn: Record<string, any> = {}
     return new Promise((resolve, reject) => {
       this.#client.end()
+      hookFn.error = (err) => reject(err)
       this.#client.once('end', resolve)
-      this.#client.once('error', reject)
+      this.#client.on('error', hookFn.error)
+    }).finally(() => {
+      this.#client.off('error', hookFn.error)
+      hookFn = {}
     })
   }
 }
