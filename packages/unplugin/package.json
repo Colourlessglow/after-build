@@ -1,14 +1,13 @@
 {
   "name": "@whitekite/unplugin-after-build",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "license": "MIT",
   "author": {
     "name": "whitekite",
     "email": "1075790909@qq.com"
   },
   "sideEffects": false,
-  "homepage": "https://gitee.com/white-kite/after-build/blob/master/README.md",
-  "repository": "https://gitee.com/white-kite/after-build",
+  "repository": "Colourlessglow/after-build",
   "scripts": {
     "build": "unbuild",
     "release": "standard-version"
