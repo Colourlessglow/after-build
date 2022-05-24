@@ -8,8 +8,7 @@
   },
   "packageManager": "pnpm@7.0.0",
   "sideEffects": false,
-  "homepage": "https://gitee.com/white-kite/after-build/blob/master/README.md",
-  "repository": "https://gitee.com/white-kite/after-build",
+  "repository": "Colourlessglow/after-build",
   "scripts": {
     "build": "turbo run build",
     "release": "turbo run release"
