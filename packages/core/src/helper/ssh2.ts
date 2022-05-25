@@ -2,7 +2,7 @@ import { Client, ConnectConfig, SFTPWrapper } from 'ssh2'
 import type { Stats } from 'ssh2-streams'
 import { EventEmitter } from 'events'
 import { createZip } from './zip'
-import { join, parse } from 'path'
+import { join, parse } from 'path/posix'
 import consola from 'consola'
 
 class SSHPromise {
