@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import path from 'path'
-import merge from 'lodash.merge'
+import { defu } from 'defu'
 
 export const loadDotEnv = (mode: string) => {
   const basePath = path.resolve(process.cwd(), `.env${mode ? `.${mode}` : ``}`)
@@ -8,7 +8,7 @@ export const loadDotEnv = (mode: string) => {
   const env = process.env
   const load = (path: string) => {
     const currentEnv = dotenv.config({ path })
-    merge(env, currentEnv)
+    defu(env, currentEnv)
   }
   load(basePath)
   load(localPath)

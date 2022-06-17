@@ -1,7 +1,7 @@
 import _jiti, { JITI } from 'jiti'
 import fs from 'fs-extra'
 import path from 'path'
-import merge from 'lodash.merge'
+import { defu } from 'defu'
 import { AfterBuildCompressType, AfterBuildFullConfig, AfterBuildPublishType } from './interface'
 import { loadDotEnv } from './dotenv'
 const extname = ['js', 'mjs', 'ts', 'cjs']
@@ -39,7 +39,7 @@ function loadConfigs(env: Record<string, any>, mode: string) {
       return
     }
 
-    config = merge(config, getConfig(jiti, configPath, env))
+    config = defu(config, getConfig(jiti, configPath, env))
   })
   return config
 }
@@ -52,7 +52,7 @@ export class AfterBuildConfig {
 
   constructor(env, mode: string, config: AfterBuildFullConfig = {}) {
     const realEnv = env || loadDotEnv(mode)
-    this.config = merge(loadConfigs(realEnv, mode), config)
+    this.config = defu(loadConfigs(realEnv, mode), config)
   }
 
   get enableBackup() {
