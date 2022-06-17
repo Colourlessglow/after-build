@@ -1,6 +1,6 @@
 {
   "name": "@whitekite/unplugin-after-build",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "license": "MIT",
   "author": {
     "name": "whitekite",
@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "unplugin": "^0.6.2",
+    "unplugin": "^0.7.0",
     "@whitekite/after-build": "workspace:*"
   },
   "standard-version": {

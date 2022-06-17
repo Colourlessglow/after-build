@@ -1,6 +1,6 @@
 {
   "name": "@whitekite/after-build",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "license": "MIT",
   "author": {
     "name": "whitekite",
@@ -30,14 +30,14 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "dayjs": "^1.11.1",
-    "ssh2-sftp-client": "^8.0.0",
-    "jszip": "^3.9.1",
+    "dayjs": "^1.11.3",
+    "ssh2-sftp-client": "^8.1.0",
+    "jszip": "^3.10.0",
     "fs-extra": "^10.1.0",
     "jiti": "^1.13.0",
     "consola": "^2.15.3",
-    "defu": "^6.0.0",
-    "dotenv": "^16.0.0",
+    "lodash.merge": "^4.6.2",
+    "dotenv": "^16.0.1",
     "cac": "^6.7.12",
     "prompts": "^2.4.2",
     "ssh2": "^1.10.0"
