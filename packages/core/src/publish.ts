@@ -11,7 +11,7 @@ const checkEnv = (pluginConfig: AfterBuildConfig) => {
   ).length
 
   if (hasEnvCount !== publishNeedEnvList.length) {
-    console.error(`代码自动部署缺少${publishNeedEnvList.join(',')}配置项`)
+    consola.error(`代码自动部署缺少${publishNeedEnvList.join(',')}配置项`)
     return
   }
   const envMap = new Map<'user' | 'port' | 'password' | 'host' | 'path', any>()
