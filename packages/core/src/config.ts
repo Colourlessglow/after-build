@@ -6,7 +6,7 @@ import { AfterBuildCompressType, AfterBuildFullConfig, AfterBuildPublishType } f
 import { loadDotEnv } from './dotenv'
 import consola from 'consola'
 
-const extname = ['js', 'mjs', 'ts', 'cjs']
+const extname = ['js', 'mjs', 'cjs', 'ts', 'cts', 'mts']
 const afterBuildFile = ['afterBuild.config']
 
 const makeAfterBuildFile = (file: string[]) => {
