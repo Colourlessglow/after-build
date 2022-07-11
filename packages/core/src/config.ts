@@ -4,6 +4,8 @@ import path from 'path'
 import { defu } from 'defu'
 import { AfterBuildCompressType, AfterBuildFullConfig, AfterBuildPublishType } from './interface'
 import { loadDotEnv } from './dotenv'
+import consola from 'consola'
+
 const extname = ['js', 'mjs', 'ts', 'cjs']
 const afterBuildFile = ['afterBuild.config']
 
@@ -36,6 +38,7 @@ function loadConfigs(env: Record<string, any>, mode: string) {
   makeAfterBuildFile([`afterBuild.${mode}`]).forEach((item) => {
     const configPath = path.resolve(process.cwd(), item)
     if (!fs.existsSync(configPath)) {
+      consola.error(`配置文件加载失败：${configPath}不存在`)
       return
     }
 
