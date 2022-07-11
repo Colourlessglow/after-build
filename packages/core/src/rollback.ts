@@ -3,7 +3,7 @@ import path from 'path'
 import consola from 'consola'
 import JSZip from 'jszip'
 import { AfterBuildConfig } from './config'
-import { DelayAsyncQueue } from './helper'
+import { DelayAsyncQueue } from '@vill-v/async'
 import { publish } from './publish'
 
 const findRollbackDirPath = (config: AfterBuildConfig) => {
@@ -28,7 +28,7 @@ const findRollbackFilePath = (zipSavePath: string, version: string, config: Afte
   const zipName = `${config.backupName}-${config.mode}-${version}`
   const zipSaveFilePath = path.join(zipSavePath, '/', `${zipName}.zip`)
   if (!fs.statSync(zipSaveFilePath)) {
-    consola.error(`未找到${zipName}.zip`)
+    consola.warn(`未找到${zipName}.zip`)
     return Promise.reject()
   }
   return Promise.resolve({ zipSaveFilePath, zipName })

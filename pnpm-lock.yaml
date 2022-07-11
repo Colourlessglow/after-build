@@ -46,6 +46,7 @@ importers:
 
   packages/core:
     specifiers:
+      '@vill-v/async': ^0.1.7
       cac: ^6.7.12
       consola: ^2.15.3
       dayjs: ^1.11.3
@@ -58,6 +59,7 @@ importers:
       ssh2: ^1.10.0
       ssh2-sftp-client: ^8.1.0
     dependencies:
+      '@vill-v/async': 0.1.7
       cac: 6.7.12
       consola: 2.15.3
       dayjs: 1.11.3
@@ -826,6 +828,12 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
+  /@vill-v/async/0.1.7:
+    resolution: {integrity: sha512-reVeELxjhMXiaYO3MIL6UcdtfiE+BxUJpxg1YuhhkNAFJJwcIL63uGSEeZcuUkwUz8pdQaVm9P8fJql7WhIQrg==}
+    dependencies:
+      '@vill-v/type-as': 0.1.7
+    dev: false
+
   /@vill-v/eslint-config-base/0.0.7_yey3kxzzdu2cqvnvvwhd4ioddi:
     resolution: {integrity: sha512-7eRwpavX4fFC3tIJ/KyBLKrw4myPlzafbMPvTB17Z34WFWQBBfdkHdxYEcUaMpyA9V0Ymoj4he29DnnJRkwxoQ==}
     engines: {node: '>12'}
@@ -890,9 +898,19 @@ packages:
     resolution: {integrity: sha512-BIyY3udQaK022tY9Wl7qqRRzwLg9X1qXsnEjnsjUJoPsTCC2+dw2S//qh0Ngv2cBdg4mBHFYNMd630LlIahUkA==}
     dev: true
 
+  /@vill-v/ts/0.1.7:
+    resolution: {integrity: sha512-mMqL/XftIgynEMRFNSVlkcMt/rDbQ8O95mnBin8VurmZLqRBu+7bQg8uJIwK/YXm2GT/fyy8rTfixJDYSOpo1A==}
+    dev: false
+
   /@vill-v/tsconfig/0.0.7:
     resolution: {integrity: sha512-3v5/nBosT/XBDcLxhdZkXc6i2OeZtGKpTDFxJJJslaLKYPKXf9cF60NkWxIEaV5aLxZzsuV0X8i9FJWxVgbofw==}
     dev: true
+
+  /@vill-v/type-as/0.1.7:
+    resolution: {integrity: sha512-Er9JFt8s2GWgaXFe1nNe0lGAjtqf3U7eTsnMTQ1x2fUdVBDcAiU2R1z5sP8rh9ZI+XtSnjIUBt+JP0ueDamuHw==}
+    dependencies:
+      '@vill-v/ts': 0.1.7
+    dev: false
 
   /@vue/cli-overlay/5.0.4:
     resolution: {integrity: sha512-ZTLAAydILjvx0XHUGSNu/cQDpmvLTMYUutDf2vf6XGkSWYqncQ6RwkeMSQhvQNlgpa/ovwIgrlGxLoojFRwdVg==}
