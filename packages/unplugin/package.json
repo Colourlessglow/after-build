@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "unplugin": "^0.7.0",
+    "unplugin": "^0.7.1",
     "@whitekite/after-build": "workspace:*"
   },
   "standard-version": {
