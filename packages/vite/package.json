@@ -10,8 +10,7 @@
   "repository": "Colourlessglow/after-build",
   "scripts": {
     "build": "tsup-node",
-    "dev": "tsup-node --watch",
-    "release": "standard-version"
+    "dev": "tsup-node --watch"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -28,12 +27,5 @@
   },
   "dependencies": {
     "@whitekite/unplugin-after-build": "workspace:*"
-  },
-  "standard-version": {
-    "skip": {
-      "commit": true,
-      "tag": true,
-      "changelog": true
-    }
   }
 }

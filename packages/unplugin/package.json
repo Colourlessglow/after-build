@@ -9,8 +9,7 @@
   "sideEffects": false,
   "repository": "Colourlessglow/after-build",
   "scripts": {
-    "build": "unbuild",
-    "release": "standard-version"
+    "build": "unbuild"
   },
   "main": "./index.js",
   "module": "./index.mjs",
@@ -35,12 +34,5 @@
   "dependencies": {
     "unplugin": "^0.7.1",
     "@whitekite/after-build": "workspace:*"
-  },
-  "standard-version": {
-    "skip": {
-      "commit": true,
-      "tag": true,
-      "changelog": true
-    }
   }
 }

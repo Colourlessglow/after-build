@@ -10,8 +10,7 @@
   "repository": "Colourlessglow/after-build",
   "scripts": {
     "build": "tsup-node",
-    "dev": "tsup-node --watch",
-    "release": "standard-version"
+    "dev": "tsup-node --watch"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -31,12 +30,5 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^5.0.8"
-  },
-  "standard-version": {
-    "skip": {
-      "commit": true,
-      "tag": true,
-      "changelog": true
-    }
   }
 }
