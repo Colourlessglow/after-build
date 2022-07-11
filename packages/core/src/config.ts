@@ -35,15 +35,19 @@ function loadConfigs(env: Record<string, any>, mode: string) {
   const jiti = _jiti(undefined as any, { requireCache: false, cache: false, v8cache: false })
   let config: AfterBuildFullConfig = {}
   config.mode = mode
+  let existPath = false
   makeAfterBuildFile([`afterBuild.${mode}`]).forEach((item) => {
     const configPath = path.resolve(process.cwd(), item)
     if (!fs.existsSync(configPath)) {
-      consola.error(`配置文件加载失败：${configPath}不存在`)
       return
     }
 
+    existPath = true
     config = defu(config, getConfig(jiti, configPath, env))
   })
+  if (!existPath) {
+    consola.warn(`配置文件加载失败：afterBuild.${mode}.[${extname.join('|')}]不存在`)
+  }
   return config
 }
 
