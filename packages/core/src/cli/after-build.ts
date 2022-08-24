@@ -1,14 +1,18 @@
 import { CAC } from 'cac'
 import prompts from 'prompts'
-import { createAfterBuild } from '../api'
+import { createAfterBuild, ICreateAfterBuild } from '../api'
 import consola from 'consola'
+import { AfterBuildCompressType } from '../interface'
 
-const filterCompress = (compress?: Record<string, boolean>) => {
+const filterCompress = (
+  compress?: Record<string, boolean>
+): Exclude<AfterBuildCompressType, 'gzip' | 'brotli'> | undefined => {
   if (!compress) {
     return
   }
-  return Object.keys(compress).filter((key) => compress[key])
+  return Object.keys(compress).filter((key) => compress[key]) as any
 }
+
 export const afterBuildCli = (cli: CAC) => {
   cli
     .command('run', '运行')
@@ -17,11 +21,13 @@ export const afterBuildCli = (cli: CAC) => {
     .option('--compress [compress]', '代码压缩')
     .option('--backup [backup]', '备份')
     .action(async (options) => {
-      const optionConfig = {
+      const optionConfig: ICreateAfterBuild = {
         mode: options?.mode,
         outputPath: options?.outputPath,
-        compress: filterCompress(options.compress),
-        backup: options.backup,
+        config: {
+          compress: filterCompress(options.compress),
+          backup: options.backup,
+        },
       }
       if (!optionConfig.mode) {
         const modeRes = await prompts({
@@ -40,6 +46,7 @@ export const afterBuildCli = (cli: CAC) => {
         })
         optionConfig.outputPath = modeRes.outputPath
       }
+
       return createAfterBuild(optionConfig).catch(() => {
         consola.error('运行失败')
         process.exit(1)
