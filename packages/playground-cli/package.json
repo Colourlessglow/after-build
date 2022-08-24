@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@whitekite/after-build": "workspace:*",
-    "@vue/cli-service": "^5.0.4",
-    "@vue/cli-plugin-typescript": "^5.0.4",
-    "vue": "^3.2.33"
+    "@vue/cli-service": "^5.0.8",
+    "@vue/cli-plugin-typescript": "^5.0.8",
+    "vue": "^3.2.37"
   },
   "scripts": {
     "dev": "vue-cli-service serve",
