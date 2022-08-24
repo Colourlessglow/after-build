@@ -52,8 +52,15 @@ export interface AfterBuildFullConfig {
   /**
    * 打包文件备份功能，传递任意字符串开启该功能
    * 传递的字符串作为备份文件的前缀
+   * 支持 Mustache 风格的参数解析
+   * 支持的参数 {{name}} package.json 的name
+   * 支持的参数 {{version}} package.json 的version
+   * 支持的参数 {{mode}} 打包的模式
+   * 支持的参数 {{time}} 打包时的时间
+   * 示例（这也是传递true时的默认值）：
+   * {{name}}-{{mode}}-{{time}}
    */
-  backup?: string
+  backup?: string | true
   /**
    * @internal
    */

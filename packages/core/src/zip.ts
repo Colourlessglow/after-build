@@ -3,8 +3,8 @@ import fs from 'fs-extra'
 import dayJs from 'dayjs'
 import { AfterBuildConfig } from './config'
 import consola from 'consola'
-import { createZip } from './helper'
-
+import { createZip, getProjectPackageMessage } from './helper'
+import Mustache from 'mustache'
 /**
  * 备份压缩
  * @param outputPath
@@ -26,7 +26,16 @@ const zip = (outputPath: string, mode: string, pluginConfig: AfterBuildConfig) =
   }
   const time = dayJs(new Date()).format('YYYYMMDDHHmmss')
 
-  const zipSaveName = `${pluginConfig.backupName}-${mode}-${time}`
+  const { name, version } = getProjectPackageMessage()
+
+  const backupName =
+    pluginConfig.backupName === true
+      ? '{{name}}-{{mode}}-{{time}}'
+      : (pluginConfig.backupName as string)
+
+  const zipSaveName = Mustache.render(backupName, { time, mode, name, version })
+
+  consola.info(`打包文件备份压缩名称${backupName}`)
 
   return createZip(zipSaveName, outputPath)
     .then((content) => fs.writeFile(`${zipSavePath}/${zipSaveName}.zip`, content, 'utf-8'))
@@ -40,4 +49,5 @@ const zip = (outputPath: string, mode: string, pluginConfig: AfterBuildConfig) =
       consola.info('打包文件备份压缩结束')
     })
 }
+
 export default zip
