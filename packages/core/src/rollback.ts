@@ -24,8 +24,7 @@ const findRollbackDirPath = (config: AfterBuildConfig) => {
   return Promise.resolve(zipSavePath)
 }
 
-const findRollbackFilePath = (zipSavePath: string, version: string, config: AfterBuildConfig) => {
-  const zipName = `${config.backupName}-${config.mode}-${version}`
+const findRollbackFilePath = (zipSavePath: string, zipName: string) => {
   const zipSaveFilePath = path.join(zipSavePath, '/', `${zipName}.zip`)
   if (!fs.statSync(zipSaveFilePath)) {
     consola.warn(`未找到${zipName}.zip`)
@@ -76,7 +75,7 @@ export const rollBack = async (mode, version) => {
 
     const rollBackDirPath = await findRollbackDirPath(pluginConfig)
     const { zipSaveFilePath: rollbackFilePath, zipName: rollbackFileName } =
-      await findRollbackFilePath(rollBackDirPath, version, pluginConfig)
+      await findRollbackFilePath(rollBackDirPath, version)
     const rollbackTempDir = await genRollbackFile(
       rollBackDirPath,
       rollbackFilePath,

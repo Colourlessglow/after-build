@@ -70,7 +70,7 @@ export class AfterBuildConfig {
     if (!this.enableBackup) {
       return ''
     }
-    return this.config.backup as string | boolean
+    return this.config.backup as string | true
   }
 
   get enableCompress() {

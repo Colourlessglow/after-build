@@ -97,10 +97,12 @@ export default defineConfig((env) => ({
 
 package.json
 
+示例备份文件名称 projectName-test-20228022.zip
+
 ```json
 {
   "scripts": {
-    "cli:rollback": "whitekite-after-build rollback --mode build-test --version 2022042322285"
+    "cli:rollback": "whitekite-after-build rollback --mode build-test --version projectName-test-20228022"
   }
 }
 ```
@@ -112,7 +114,7 @@ package.json
 ```json
 {
   "scripts": {
-    "cli:afterBuild": "whitekite-after-build run --mode build-test --compress.gzip --compress.br --backup web --outputPath /file-path"
+    "cli:afterBuild": "whitekite-after-build run --mode build-test --compress.gzip --compress.br --backup {{name}}@{{version}} --outputPath /file-path"
   }
 }
 ```
